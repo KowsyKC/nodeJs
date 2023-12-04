@@ -9,7 +9,7 @@ const requestHandler= (req, res) => {
         res.write('<head><title>Enter Message</title></head>');
         res.write('<body><form action="/message" method="POST" ><input type="text" name="message"><button type="submit">send</button></form></body>');
         res.write('</html>');
-        return res.end();
+        res.end();
       }
       if (url === '/message' && method==='POST') {
         const body= [];
@@ -19,14 +19,20 @@ const requestHandler= (req, res) => {
             body.push(chunk);
         });
         return res.on('end', () => {
-            //parse form data, write to file, and redirect
+           
             const parsedBody= Buffer.concat(body).toString();
             const message= parsedBody.split('=')[1];
     
             fs.writeFile('message.txt', message, (err) => {
-                res.statusCode= 302;
-                res.setHeader('Location', '/');
-                return res.end();
+                if (err) {
+                    console.error(err);
+                    res.statusCode = 500;
+                    res.end('Internal Server Error');
+                } else {
+                    res.statusCode = 302;
+                    res.setHeader('Location', '/');
+                    return res.end();
+                }
             });   
         });
       }
@@ -39,18 +45,13 @@ const requestHandler= (req, res) => {
       res.end(); 
 };
 
-
-module.exports= requestHandler;
-
-/*
 module.exports= {
     handler: requestHandler,
     someText: "some hard coded text"
 };
+/*
+module.exports= requestHandler;
 
 module.exports.handler= requestHandler;
 module.exports.someText= "some hard coded text";
 */
-  
-
-// In Node.js, the event loop is a continuous process that efficiently handles asynchronous operations. It allows non-blocking execution by managing tasks like I/O operations, callbacks, and events, ensuring optimal performance and responsiveness in applications.
