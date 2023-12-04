@@ -1,0 +1,16 @@
+{
+  "name": "nodejs_learn",
+  "version": "1.0.0",
+  "description": "some text",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js",
+    "start-server": "node app.js"
+  },
+  "author": "kowsy",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
