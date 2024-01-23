@@ -1,35 +1,30 @@
 const express= require('express');
+const bodyParser= require('body-parser')
 
 const app= express();
 
-app.use((req, res, next) => {
-    console.log('in the middleware');
+// Use body-parser middleware to parse form data
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.use('/', (req, res, next) => {
+  //console.log('This always run!');
     next();
 });
 
-app.use((req, res, next) => {
-    console.log('in another middleware');
-    res.send('<h1>hello from express</h1>');
+app.use('/add-product', (req, res, next) => {
+  //console.log('In another middleware');
+    res.send('<form action="/product" method="post"><input type="text" name="title"><input type="text" name="size"><button type="submit"></button></form>');
+});
+
+app.post('/product', (req, res, next) => {
+    console.log(req.body)
+    res.redirect('/');
+});
+
+app.use('/', (req, res, next) => {
+  //console.log('In another middleware');
+    res.send('<h1>hello from Express</h1>');
 });
 
 app.listen(3000);
 
-/*
-Express.js is a popular web application framework for Node.js.
-To use Express include its simplicity, flexibility, middleware support.
-
-Middlewares in Express are functions that have access to the request, response, and the next middleware function in the application's request-response cycle
-
-next function is a callback parameter. It is used to move to the next middleware function in the request-response cycle.
-
-res.send is an Express method used to send a response to the client. It automatically sets the Content-Type header based on the type of the response.
-It can send HTML, text, JSON, or other types of data.
-
-If i do res.send('<h1> hello to node js </h1>') . What will be the content-type header equal to.
- text/html because you are sending HTML content.
-
-If I do res.send( { key1: value }) . What will be the content-type header equal to.
-to application/json because you are sending a JSON object.
-
-app.listen(3000) makes Express application listen on port 3000 for incoming HTTP requests. It starts a server that will handle these requests.
-*/
