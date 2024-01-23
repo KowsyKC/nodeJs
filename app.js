@@ -3,28 +3,16 @@ const bodyParser= require('body-parser')
 
 const app= express();
 
-// Use body-parser middleware to parse form data
-app.use(bodyParser.urlencoded({extended: true}));
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
 
-app.use('/', (req, res, next) => {
-  //console.log('This always run!');
-    next();
-});
+app.use(bodyParser.urlencoded({extended: false}));
 
-app.use('/add-product', (req, res, next) => {
-  //console.log('In another middleware');
-    res.send('<form action="/product" method="post"><input type="text" name="title"><input type="text" name="size"><button type="submit"></button></form>');
-});
+app.use('/admin',adminRoutes)
+app.use('shop',shopRoutes)
 
-app.post('/product', (req, res, next) => {
-    console.log(req.body)
-    res.redirect('/');
-});
-
-app.use('/', (req, res, next) => {
-  //console.log('In another middleware');
-    res.send('<h1>hello from Express</h1>');
+app.use((req, res, next) => {
+  res.status(404).send('<h1>Page not found</h1>');
 });
 
 app.listen(3000);
-
