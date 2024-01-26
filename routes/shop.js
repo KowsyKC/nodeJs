@@ -1,9 +1,11 @@
-const express= require('express');
+const path = require('path');
 
-const router= express.Router();
+const express = require('express');
 
-router.get('/', (req, res, next) => {
-    res.send('<h1>Welcome to epress.js shop</h1>');
-});
+const productsController = require('../controllers/products');
 
-module.exports= router;
+const router = express.Router();
+
+router.get('/', productsController.getProducts );
+
+module.exports = router;
