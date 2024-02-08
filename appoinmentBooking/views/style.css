@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 10px; 
+  }
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #828385;
+  }
+  
+  h1{
+    margin-bottom: 5px;
+    color: #fff;
+    text-align: center;
+  }
+  
+  #appointmentForm {
+    background-color: #cfeffa;
+    box-shadow: 0 15px 30px rgba(148, 203, 235, 0.3);
+    width: 40%;
+    margin: auto; /* Center horizontally */
+    margin-top: 20px; /* Adjust as needed for vertical centering */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+  }
+  
+  #appointmentForm label {
+    display: block;
+    color: #111111;
+  }
+  
+  #appointmentForm input{
+    width: 60%;
+    font-weight: 500;
+    border: 2px solid hsl(200, 9%, 66%);
+    font-size: 15px;
+    color: #111111;
+    height: 40px;
+    position: relative;
+    margin: 5px;
+  }
+
+  label{
+    color: #111111;
+  }
+
+  button {
+    border: none;
+    cursor: pointer;
+    display: inline;
+    width: 60px;
+    height: 30px;
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
+
+  #btn {
+    background-color: #19A68C; 
+    width: 100px;
+    height: 40px;
+  }
+
+  .edit-btn{
+    background-color: #6693f5; 
+  }
+  .delete-btn {
+    background-color: #d80505;
+  }
+  #btn:hover {
+    background-color: #54fcbb;  
+  }  
+
+  button:focus {
+    box-shadow: 0 0 3px 2px rgba(236, 189, 234, 0.5);
+  }
+
+  ul {
+    list-style-type: none; 
+  }
+
+  li {
+    padding: 10px;
+    font-size: 15px;
+    margin-top: 20px;
+    height: 40px;
+    width: 65%;
+    color: #010b0e;
+  }
+
+  li:hover {
+    background-color: #4d4848;
+  }
+
+  #d-btn:hover {
+    background-color: #740909;
+  }
+  #e-btn:hover {
+    background-color: #aca4ee;
+  }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Appointment Booking App</h1>
+
+  <form id="appointmentForm" action="http://localhost:3000/api/user" method="POST">
+    <input type="text" id="name" placeholder="Name" required><br>
+    <input type="email" id="email" placeholder="Email" required><br>
+    <input type="tel" id="phone" placeholder="Phone" required><br>
+    <button id="btn" type="submit">Update</button>
+  </form>
+  
+  <div>
+    <ul id="userList"></ul>
+  </div>
+  <script src="app.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js" ></script>
+
+  <script src="script.js" type="text/javascript" nomodule> </script>
+  
+  
+
+</body>
+</html>
