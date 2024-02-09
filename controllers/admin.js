@@ -13,12 +13,12 @@ exports.postAddProduct = (req, res, next) => {
   const imageUrl = req.body.imageUrl;
   const price = req.body.price;
   const description = req.body.description;
-  req.user.createProduct({
+  req.user
+    .createProduct({
       title: title,
       price: price,
       imageUrl: imageUrl,
-      description: description,
-      userId: req.user.id
+      description: description
     })
     .then(result => {
       // console.log(result);
@@ -38,7 +38,7 @@ exports.getEditProduct = (req, res, next) => {
   const prodId = req.params.productId;
   req.user
     .getProducts({ where: { id: prodId } })
-   //  Product.findById(prodId)
+    // Product.findById(prodId)
     .then(products => {
       const product = products[0];
       if (!product) {
